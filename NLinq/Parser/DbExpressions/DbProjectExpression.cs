@@ -7,10 +7,10 @@ namespace NLinq.Parser.DbExpressions
 {
     public abstract class DbProjectExpression: DbExpression
     {
-        public DbExpression Input;
+        public DbExpressionBinding Input;
         public DbExpression Body;
 
-        public DbProjectExpression(DbExpression input, DbExpression body,DbExpressionKind kind)
+        public DbProjectExpression(DbExpressionBinding input, DbExpression body,DbExpressionKind kind)
             :base(kind)
         {
             this.Input = input;
