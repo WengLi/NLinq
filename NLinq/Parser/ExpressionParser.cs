@@ -36,7 +36,6 @@ namespace NLinq.Parser
         private static IEnumerable<Translator> GetTranslators()
         {
             yield return new ConstantTranslator();
-            yield return new LambdaTranslator();
             yield return new MemberAccessTranslator();
             yield return new MethodCallTranslator();
             yield return new NewTranslator();
@@ -59,6 +58,54 @@ namespace NLinq.Parser
                 }
             }
             return dbExpression;
+        }
+
+        internal DbExpression ParseLambda(LambdaExpression lamda)
+        {
+            foreach (var p in lamda.Parameters)
+            {
+                bindContext.Push(p, Parse(p));
+            }
+
+            var dbExpression = Parse(lamda.Body);
+
+            foreach (var p in lamda.Parameters)
+            {
+                bindContext.Pop();
+            }
+            return dbExpression;
+        }
+
+        internal LambdaExpression GetLambdaExpression(Expression argument)
+        {
+            if (ExpressionType.Lambda == argument.NodeType)
+            {
+                return (LambdaExpression)argument;
+            }
+            else if (ExpressionType.Quote == argument.NodeType)
+            {
+                return GetLambdaExpression(((UnaryExpression)argument).Operand);
+            }
+            else if (ExpressionType.Call == argument.NodeType)
+            {
+                if (typeof(Expression).IsAssignableFrom(argument.Type))
+                {
+                    var expressionMethod = Expression.Lambda<Func<Expression>>(argument).Compile();
+
+                    return GetLambdaExpression(expressionMethod.Invoke());
+                }
+            }
+            else if (ExpressionType.Invoke == argument.NodeType)
+            {
+                if (typeof(Expression).IsAssignableFrom(argument.Type))
+                {
+                    var expressionMethod = Expression.Lambda<Func<Expression>>(argument).Compile();
+
+                    return GetLambdaExpression(expressionMethod.Invoke());
+                }
+            }
+
+            throw new InvalidOperationException();
         }
     }
 }

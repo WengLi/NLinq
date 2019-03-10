@@ -66,18 +66,6 @@ namespace NLinq.Parser.Translators
         }
     }
 
-    internal class LambdaTranslator : Translator<LambdaExpression>
-    {
-        public LambdaTranslator() : base(ExpressionType.Lambda) { }
-
-        public override DbExpression TypeTranslate(ExpressionParser parser, LambdaExpression expr)
-        {
-            List<DbExpression> parameters = expr.Parameters.Select(o => parser.Parse(o)).ToList();
-            DbExpression body = parser.Parse(expr.Body);
-            throw new Exception();
-        }
-    }
-
     internal class MemberAccessTranslator : Translator<MemberExpression>
     {
         public MemberAccessTranslator() : base(ExpressionType.MemberAccess) { }
@@ -86,7 +74,7 @@ namespace NLinq.Parser.Translators
         {
             if (WorkSpace.EntitySetCache.TryGetValue(expr.Expression.Type, out EntitySet entitySet))
             {
-                var property = entitySet.EntityProperties.Find(o => o.PropertyInfo == expr.Type);
+                var property = entitySet.EntityProperties.Find(o => o.PropertyInfo == expr.Member);
                 return new DbMemberExpression(property);
             }
             throw new Exception();
