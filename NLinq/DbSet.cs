@@ -8,9 +8,9 @@ namespace NLinq
     {
         private ObjectQuery<TEntity> _objectQuery;
 
-        public DbSet()
+        public DbSet(DbContext context)
         {
-            _objectQuery = new ObjectQuery<TEntity>(null, null);
+            _objectQuery = new ObjectQuery<TEntity>(null, null, context);
         }
 
         public Type ElementType => typeof(TEntity);

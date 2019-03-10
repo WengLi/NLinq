@@ -6,9 +6,14 @@ namespace NLinq
 {
     public abstract class DbContext
     {
+        public DbContext()
+        {
+            new DbSetDiscoveryService(this).InitializeSets();
+        }
+
         protected DbSet<T> Set<T>() where T:class
         {
-            return new DbSet<T>();
+            return new DbSet<T>(this);
         }
     }
 }

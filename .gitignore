@@ -46,3 +46,4 @@ NLinqTest/obj/NLinqTest.csproj.nuget.cache
 NLinqTest/obj/NLinqTest.csproj.nuget.g.props
 NLinqTest/obj/NLinqTest.csproj.nuget.g.targets
 NLinqTest/obj/project.assets.json
+/NLinq/bin/Debug/netcoreapp2.2

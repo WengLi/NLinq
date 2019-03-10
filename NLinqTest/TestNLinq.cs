@@ -26,7 +26,7 @@ namespace NLinqTest
 
     public class MyDbContext:DbContext
     {
-        public DbSet<User> User;
+        public DbSet<User> User { get; set; }
 
         public MyDbContext()
         {
