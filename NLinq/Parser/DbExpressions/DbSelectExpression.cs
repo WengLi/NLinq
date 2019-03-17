@@ -6,7 +6,7 @@ namespace NLinq.Parser.DbExpressions
 {
     public class DbSelectExpression : DbProjectExpression
     {
-        public DbSelectExpression(DbExpression input, DbExpression body)
+        public DbSelectExpression(DbProjectExpression input, DbExpression body)
             : base(input, body, DbExpressionKind.Select)
         { }
 

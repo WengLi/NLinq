@@ -6,7 +6,7 @@ namespace NLinq.Parser.DbExpressions
 {
     public class DbWhereExpression : DbProjectExpression
     {
-        public DbWhereExpression(DbExpression input, DbExpression body) :
+        public DbWhereExpression(DbProjectExpression input, DbExpression body) :
             base(input, body, DbExpressionKind.Where)
         { }
 

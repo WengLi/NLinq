@@ -19,6 +19,7 @@ namespace NLinq.Parser.DbExpressions
         GreaterThan,
         GreaterThanOrEqual,
         LessThan,
-        LessThanOrEqual
+        LessThanOrEqual,
+        Reference
     }
 }

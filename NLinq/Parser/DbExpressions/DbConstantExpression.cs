@@ -16,7 +16,7 @@ namespace NLinq.Parser.DbExpressions
         [System.Diagnostics.DebuggerNonUserCode]
         public override T Visit<T>(DbExpressionVisitor<T> visitor)
         {
-            throw new NotImplementedException();
+            return visitor.Visit(this);
         }
     }
 }

@@ -4,12 +4,12 @@ using System.Text;
 
 namespace NLinq.Parser.DbExpressions
 {
-    public class DbEntitySetExpression: DbExpression
+    public class DbEntitySetExpression: DbProjectExpression
     {
         public EntitySet EntitySet;
 
         public DbEntitySetExpression(EntitySet entity)
-            : base(DbExpressionKind.EntitySet)
+            : base(null, null, DbExpressionKind.EntitySet)
         {
             this.EntitySet = entity;
         }
