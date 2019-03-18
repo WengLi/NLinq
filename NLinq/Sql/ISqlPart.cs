@@ -6,5 +6,6 @@ namespace NLinq.Sql
 {
     public interface ISqlPart
     {
+        void WriteSql(SqlWriter writer, SqlGenerator sqlGenerator);
     }
 }
