@@ -40,7 +40,7 @@ namespace NLinq.Parser.Metadata
             Interlocked.CompareExchange(ref _primitiveTypes, readOnlyTypes, null);
         }
 
-        private PrimitiveType CreatePrimitiveType(Type clrType, PrimitiveTypeKind primitiveTypeKind)
+        private static PrimitiveType CreatePrimitiveType(Type clrType, PrimitiveTypeKind primitiveTypeKind)
         {
             var primitiveType = new PrimitiveType { ClrType = clrType, PrimitiveTypeKind = primitiveTypeKind };
             return primitiveType;
