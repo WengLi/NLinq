@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NLinq.Parser.Metadata;
 
 namespace NLinq.Parser.DbExpressions
 {
@@ -9,7 +10,7 @@ namespace NLinq.Parser.DbExpressions
         public EntityProperty EntityProperty;
 
         public DbMemberExpression(EntityProperty property)
-            : base(DbExpressionKind.Member)
+            : base(DbExpressionKind.Member, new EntityPropertyType(property))
         {
             this.EntityProperty = property;
         }

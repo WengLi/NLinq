@@ -1,15 +1,16 @@
-﻿using System;
+﻿using NLinq.Parser.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace NLinq.Parser.DbExpressions
 {
-    public class DbEntitySetExpression: DbProjectExpression
+    public class DbEntitySetExpression: DbExpression
     {
         public EntitySet EntitySet;
 
         public DbEntitySetExpression(EntitySet entity)
-            : base(null, null, DbExpressionKind.EntitySet)
+            : base(DbExpressionKind.EntitySet,new EntityType(entity))
         {
             this.EntitySet = entity;
         }

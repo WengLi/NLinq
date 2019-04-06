@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLinq.Parser.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,7 @@ namespace NLinq.Parser.DbExpressions
         public DbExpression Right;
 
         public DbOrElseExpression(DbExpression left, DbExpression right)
-            : base(DbExpressionKind.AndAlso)
+            : base(DbExpressionKind.AndAlso, PrimitiveType.BooleanType)
         {
             this.Left = left;
             this.Right = right;

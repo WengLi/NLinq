@@ -5,6 +5,7 @@ using NLinq.Parser.DbExpressions;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Linq;
+using NLinq.Parser.Metadata;
 
 namespace NLinq.Parser.Translators
 {
@@ -50,18 +51,19 @@ namespace NLinq.Parser.Translators
 
         public override DbExpression TypeTranslate(ExpressionParser parser, ConstantExpression expr)
         {
-            ObjectQuery objectQuery = expr.Value as ObjectQuery;
-            if (objectQuery != null)
+            if (expr.Value is ObjectQuery objectQuery)
             {
                 if (WorkSpace.EntitySetCache.TryGetValue(objectQuery.ElementType, out EntitySet entitySet))
                 {
+                    DbParameterExpression p = new DbParameterExpression(
+                        parser.ParameterAliasGenerator.GetName(), new EntityType(entitySet));
                     return new DbEntitySetExpression(entitySet);
                 }
                 throw new NotSupportedException();
             }
             else
             {
-                return new DbConstantExpression(expr.Value);
+                return new DbConstantExpression(expr.Value, null);
             }
         }
     }
@@ -132,7 +134,7 @@ namespace NLinq.Parser.Translators
         public override DbExpression TypeTranslate(ExpressionParser parser, NewExpression expr)
         {
             List<DbExpression> expressions = expr.Arguments.Select(o => parser.Parse(o)).ToList();
-            return new DbNewExpression(expressions, expr);
+            return new DbNewExpression(expressions, expr, new RowType(expr));
         }
     }
 
@@ -154,7 +156,7 @@ namespace NLinq.Parser.Translators
 
         public override DbExpression TypeTranslate(ExpressionParser parser, ParameterExpression expr)
         {
-            return new DbParameterExpression(parser.ParameterAliasGenerator.GetName(), expr.Type);
+            return new DbParameterExpression(parser.ParameterAliasGenerator.GetName(),new GlobalType(expr.Type));
         }
     }
 

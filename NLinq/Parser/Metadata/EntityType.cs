@@ -4,7 +4,14 @@ using System.Text;
 
 namespace NLinq.Parser.Metadata
 {
-    class EntityType
+    public class EntityType : BaseType
     {
+        public EntitySet EntitySet;
+
+        public EntityType(EntitySet entitySet)
+            :base (entitySet.EntityType)
+        {
+            this.EntitySet = entitySet;
+        }
     }
 }

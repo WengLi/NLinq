@@ -4,8 +4,10 @@ using System.Text;
 
 namespace NLinq.Parser.Metadata
 {
-    public abstract class MetadataItem
+    public class GlobalType : BaseType
     {
-        public Type ClrType { get; set; }
+        public GlobalType(Type t)
+            :base(t)
+        { }
     }
 }

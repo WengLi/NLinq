@@ -6,11 +6,18 @@ using System.Threading;
 
 namespace NLinq.Parser.Metadata
 {
-    public class PrimitiveType : MetadataItem
+    public class PrimitiveType : BaseType
     {
         private static ReadOnlyCollection<PrimitiveType> _primitiveTypes;
 
+        public static PrimitiveType BooleanType = GetPrimitiveType(typeof(bool));
         public PrimitiveTypeKind PrimitiveTypeKind;
+
+        public PrimitiveType(Type t)
+            : base(t)
+        {
+            ClrType = t;
+        }
 
         private static void InitializePrimitiveTypes()
         {
@@ -42,7 +49,7 @@ namespace NLinq.Parser.Metadata
 
         private static PrimitiveType CreatePrimitiveType(Type clrType, PrimitiveTypeKind primitiveTypeKind)
         {
-            var primitiveType = new PrimitiveType { ClrType = clrType, PrimitiveTypeKind = primitiveTypeKind };
+            var primitiveType = new PrimitiveType(clrType) { PrimitiveTypeKind = primitiveTypeKind };
             return primitiveType;
         }
 

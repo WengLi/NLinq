@@ -9,7 +9,7 @@ namespace NLinq.Parser.DbExpressions
         public DbExpression Reference;
         public DbParameterExpression Parameter;
         public DbReferenceExpression(DbExpression refer, DbParameterExpression parameter)
-            : base(DbExpressionKind.Reference)
+            : base(DbExpressionKind.Reference, null)
         {
             this.Reference = refer;
             this.Parameter = parameter;

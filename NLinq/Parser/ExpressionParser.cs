@@ -60,19 +60,11 @@ namespace NLinq.Parser
             return dbExpression;
         }
 
-        internal DbExpression ParseLambda(LambdaExpression lamda)
+        internal DbExpression ParseLambda(DbExpressionBinding input, LambdaExpression lamda)
         {
-            foreach (var p in lamda.Parameters)
-            {
-                bindContext.Push(p, Parse(p));
-            }
-
+            bindContext.Push(lamda.Parameters[0], input.Parameter);
             var dbExpression = Parse(lamda.Body);
-
-            foreach (var p in lamda.Parameters)
-            {
-                bindContext.Pop();
-            }
+            bindContext.Pop();
             return dbExpression;
         }
 

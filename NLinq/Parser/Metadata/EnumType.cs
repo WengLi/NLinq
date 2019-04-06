@@ -4,7 +4,10 @@ using System.Text;
 
 namespace NLinq.Parser.Metadata
 {
-    class EnumType
+    public class EnumType : BaseType
     {
+        public EnumType(Type underType)
+            : base(underType)
+        { }
     }
 }

@@ -34,8 +34,8 @@ namespace NLinq.Parser.Translators
         {
             DbProjectExpression input = parser.Parse(callExpression.Arguments[0]) as DbProjectExpression;
             LambdaExpression lambda = parser.GetLambdaExpression(callExpression.Arguments[1]);
-            DbExpression body = parser.ParseLambda(lambda);
-            return new DbSelectExpression(input, body);
+            DbExpression body = parser.ParseLambda(input.Input, lambda);
+            return new DbSelectExpression(input.Input, body, input.ResultType);
         }
     }
 
@@ -49,8 +49,8 @@ namespace NLinq.Parser.Translators
         {
             DbProjectExpression input = parser.Parse(callExpression.Arguments[0]) as DbProjectExpression;
             LambdaExpression lambda = parser.GetLambdaExpression(callExpression.Arguments[1]);
-            DbExpression body = parser.ParseLambda(lambda);
-            return new DbWhereExpression(input, body);
+            DbExpression body = parser.ParseLambda(input.Input, lambda);
+            return new DbWhereExpression(input.Input, body, input.ResultType);
         }
     }
 }

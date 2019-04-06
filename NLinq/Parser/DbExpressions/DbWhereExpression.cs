@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLinq.Parser.Metadata;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,8 @@ namespace NLinq.Parser.DbExpressions
 {
     public class DbWhereExpression : DbProjectExpression
     {
-        public DbWhereExpression(DbProjectExpression input, DbExpression body) :
-            base(input, body, DbExpressionKind.Where)
+        public DbWhereExpression(DbExpressionBinding input, DbExpression body, BaseType type) :
+            base(input, body, DbExpressionKind.Where, type)
         { }
 
         [System.Diagnostics.DebuggerNonUserCode]
