@@ -64,7 +64,7 @@ namespace NLinq
         public IEnumerator<TEntity> GetEnumerator()
         {
             var dbExpression = new ExpressionParser().Parse(_expression);
-            return null;
+            return new List<TEntity>().GetEnumerator();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace NLinqTest
         public void TestWhereExpression()
         {
             MyDbContext db = new MyDbContext();
-            var query = db.User.Where(o => o.Name == "").Select(o => o.Name);
+            var query = db.User.Where(o => o.Name == "").Select(o => new { o.ID, o.Name });
             foreach (var item in query)
             { }
         }

@@ -5,14 +5,15 @@ using System.Text;
 
 namespace NLinq.Parser.DbExpressions
 {
-    public class DbEntitySetExpression: DbExpression
+    public class DbEntitySetExpression : DbProjectExpression
     {
         public EntitySet EntitySet;
 
-        public DbEntitySetExpression(EntitySet entity)
-            : base(DbExpressionKind.EntitySet,new EntityType(entity))
+        public DbEntitySetExpression(EntitySet entity, DbParameterExpression parameter)
+            : base(null, null, DbExpressionKind.EntitySet, new EntityType(entity))
         {
             this.EntitySet = entity;
+            this.Input = new DbExpressionBinding(this, parameter);
         }
 
         [System.Diagnostics.DebuggerNonUserCode]

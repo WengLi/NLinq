@@ -55,9 +55,8 @@ namespace NLinq.Parser.Translators
             {
                 if (WorkSpace.EntitySetCache.TryGetValue(objectQuery.ElementType, out EntitySet entitySet))
                 {
-                    DbParameterExpression p = new DbParameterExpression(
-                        parser.ParameterAliasGenerator.GetName(), new EntityType(entitySet));
-                    return new DbEntitySetExpression(entitySet);
+                    DbParameterExpression p = new DbParameterExpression(parser.ParameterAliasGenerator.GetName(), new EntityType(entitySet));
+                    return new DbEntitySetExpression(entitySet, p);
                 }
                 throw new NotSupportedException();
             }
