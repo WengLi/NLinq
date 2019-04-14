@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq.Expressions;
+using System.Linq;
 
 namespace NLinq.DataType
 {
@@ -17,6 +18,11 @@ namespace NLinq.DataType
         {
             this.RowExpression = new RowExpression(expression);
             this.Members = memberTypes;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("row({0})", string.Join(",", Members.Select(o => o.ToString())));
         }
     }
 

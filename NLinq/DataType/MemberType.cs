@@ -13,5 +13,10 @@ namespace NLinq.DataType
         {
             this.MemberInfo = memberInfo;
         }
+
+        public override string ToString()
+        {
+            return MemberInfo.Name;
+        }
     }
 }

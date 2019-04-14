@@ -13,5 +13,10 @@ namespace NLinq.DataType
         {
             this.EntitySet = entitySet;
         }
+
+        public override string ToString()
+        {
+            return EntitySet.TableName;
+        }
     }
 }

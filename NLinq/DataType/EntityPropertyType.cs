@@ -14,5 +14,10 @@ namespace NLinq.DataType
         {
             this.EntityProperty = entityProperty;
         }
+
+        public override string ToString()
+        {
+            return EntityProperty.ColumnName;
+        }
     }
 }
