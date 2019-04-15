@@ -8,6 +8,8 @@ namespace NLinq.DataType
     {
         public EntitySet EntitySet { get; set; }
 
+        public override DataTypeKind TypeKind => DataTypeKind.EntityType;
+
         public EntityType(EntitySet entitySet)
             : base(entitySet.EntityType)
         {

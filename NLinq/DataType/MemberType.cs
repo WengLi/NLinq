@@ -7,7 +7,8 @@ namespace NLinq.DataType
 {
     public class MemberType : BaseType
     {
-       public MemberInfo MemberInfo { get; set; }
+        public MemberInfo MemberInfo { get; set; }
+        public override DataTypeKind TypeKind => DataTypeKind.MemberType;
         public MemberType(MemberInfo memberInfo)
             : base(memberInfo.GetPropertyOrFieldType())
         {

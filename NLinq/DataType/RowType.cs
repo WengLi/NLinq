@@ -13,6 +13,8 @@ namespace NLinq.DataType
 
         public MemberType[] Members { get; set; }
 
+        public override DataTypeKind TypeKind => DataTypeKind.RowType;
+
         public RowType(Type t,Expression expression, params MemberType[] memberTypes)
             : base(t)
         {

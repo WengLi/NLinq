@@ -33,6 +33,8 @@ namespace NLinq.DataType
         private static ReadOnlyCollection<PrimitiveType> _primitiveTypes;
         public PrimitiveTypeKind PrimitiveTypeKind { get; set; }
 
+        public override DataTypeKind TypeKind => DataTypeKind.PrimitiveType;
+
         public PrimitiveType(Type t)
             : base(t)
         {
