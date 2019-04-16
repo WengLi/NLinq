@@ -8,8 +8,10 @@ namespace NLinq.DataType
     {
         public override DataTypeKind TypeKind => DataTypeKind.CollectionType;
         public BaseType Element { get; set; }
-        public CollectionType(Type t)
+        public CollectionType(BaseType ele, Type t)
             : base(t)
-        { }
+        {
+            Element = ele;
+        }
     }
 }

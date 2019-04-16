@@ -10,13 +10,15 @@ namespace NLinq.DbExpressions
     public class DbNewExpression : DbExpression
     {
         public NewExpression Expression;
-        public ReadOnlyCollection<DbExpression> Members;
 
-        public DbNewExpression(IList<DbExpression> expressions, NewExpression expression, RowType type)
+        public IEnumerable<DbMemberExpression> NewMembers { get; }
+
+        public override IEnumerable<DbMemberExpression> Members => NewMembers;
+
+        public DbNewExpression(RowType type,params DbMemberExpression[] args)
             : base(DbExpressionKind.New, type)
         {
-            Members = new ReadOnlyCollection<DbExpression>(expressions);
-            this.Expression = expression;
+            this.NewMembers = args;
         }
     }
 }

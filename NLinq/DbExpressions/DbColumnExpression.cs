@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace NLinq.DbExpressions
 {
@@ -14,5 +15,7 @@ namespace NLinq.DbExpressions
         {
             this.EntityProperty = property;
         }
+
+        public override IEnumerable<DbMemberExpression> Members => Enumerable.Empty<DbMemberExpression>();
     }
 }

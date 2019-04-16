@@ -21,19 +21,22 @@ namespace NLinq.DbExpressions
         GreaterThan,
         GreaterThanOrEqual,
         LessThan,
-        LessThanOrEqual
+        LessThanOrEqual,
+        GroupBy
     }
 
     public abstract class DbExpression 
     {
         public BaseType ResultType { get; set; }
 
-        public DbExpressionKind DbExpressionKind { get; set; }
+        public DbExpressionKind ExpressionKind { get; set; }
 
         public DbExpression(DbExpressionKind kind, BaseType type)
         {
-            this.DbExpressionKind = kind;
+            this.ExpressionKind = kind;
             this.ResultType = type;
         }
+
+        public abstract IEnumerable<DbMemberExpression> Members { get; }
     }
 }

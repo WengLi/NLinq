@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace NLinq.DbExpressions
 {
@@ -15,6 +16,14 @@ namespace NLinq.DbExpressions
         {
             this.Left = left;
             this.Right = right;
+        }
+
+        public override IEnumerable<DbMemberExpression> Members
+        {
+            get
+            {
+                return Left.Members.Union(Right.Members);
+            }
         }
     }
 }

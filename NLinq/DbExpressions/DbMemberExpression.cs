@@ -18,5 +18,13 @@ namespace NLinq.DbExpressions
             this.MemberInfo = memberInfo;
             this.Argument = arg;
         }
+
+        public override IEnumerable<DbMemberExpression> Members
+        {
+            get
+            {
+                yield return this;
+            }
+        }
     }
 }

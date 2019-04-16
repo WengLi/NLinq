@@ -1,6 +1,7 @@
 ﻿using NLinq.DataType;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace NLinq.DbExpressions
@@ -13,5 +14,7 @@ namespace NLinq.DbExpressions
         {
             this.Value = value;
         }
+
+        public override IEnumerable<DbMemberExpression> Members => Enumerable.Empty<DbMemberExpression>();
     }
 }
