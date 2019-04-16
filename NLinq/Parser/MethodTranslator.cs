@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NLinq.Parser.DbExpressions;
 using System.Linq.Expressions;
+using NLinq.DbExpressions;
 
-namespace NLinq.Parser.Translators
+namespace NLinq.Parser
 {
     internal enum MethodKind
     {

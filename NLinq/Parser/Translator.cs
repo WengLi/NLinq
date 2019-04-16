@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NLinq.Parser.DbExpressions;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Linq;
-using NLinq.Parser.Metadata;
+using NLinq.DbExpressions;
+using NLinq.DataType;
 
 namespace NLinq.Parser.Translators
 {
