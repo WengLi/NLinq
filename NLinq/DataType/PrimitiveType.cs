@@ -31,6 +31,10 @@ namespace NLinq.DataType
     public class PrimitiveType : BaseType
     {
         private static ReadOnlyCollection<PrimitiveType> _primitiveTypes;
+
+        public static PrimitiveType BooleanType = GetPrimitiveType(PrimitiveTypeKind.Boolean);
+        public static PrimitiveType Int32Type = GetPrimitiveType(PrimitiveTypeKind.Int32);
+
         public PrimitiveTypeKind PrimitiveTypeKind { get; set; }
 
         public override DataTypeKind TypeKind => DataTypeKind.PrimitiveType;

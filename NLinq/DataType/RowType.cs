@@ -15,7 +15,7 @@ namespace NLinq.DataType
 
         public override DataTypeKind TypeKind => DataTypeKind.RowType;
 
-        public RowType(Type t,Expression expression, params MemberType[] memberTypes)
+        public RowType(Type t, Expression expression, params MemberType[] memberTypes)
             : base(t)
         {
             this.RowExpression = new RowExpression(expression);
