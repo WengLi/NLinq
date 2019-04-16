@@ -7,9 +7,12 @@ namespace NLinq.DbExpressions
 {
     public class DbOrderByExpression : DbProjectExpression
     {
-        public DbOrderByExpression(DbExpressionBinding bind, DbExpression body, BaseType type)
+        public bool Asc { get; }
+        public DbOrderByExpression(DbExpressionBinding bind, DbExpression body, BaseType type, bool asc)
            : base(bind, body, DbExpressionKind.GroupBy, type)
-        { }
+        {
+            this.Asc = asc;
+        }
 
 
         public IEnumerable<DbMemberExpression> OrderMembers => Body.Members;
